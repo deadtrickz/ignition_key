@@ -1,5 +1,10 @@
 #!/bin/bash
-
+#
+# Depending on dependencies *lul* you may end up having to do 
+# sudo apt --fix-broken-install
+# and run the script again. Alternativly comment out seclists to speed it up
+# I'll add the dependencies for parrot later but it may vary by release 
+#
 # Define colors...
 RED=`tput bold && tput setaf 1`
 GREEN=`tput bold && tput setaf 2`
@@ -231,6 +236,8 @@ sudo apt-get install -y oracle-java8-installer
 BLUE "Downloading stegsolve.jar..."
 wget "http://www.caesum.com/handbook/Stegsolve.jar" -O "stegsolve.jar"
 chmod +x "stegsolve.jar"
+sudo mkdir /opt/stegsolve
+sudo mv stegsolve.jar /opt/stegsolve
 
 BLUE "Installing fcrackzip..."
 sudo apt install -y fcrackzip
@@ -253,7 +260,6 @@ sudo pip install iptools
 BLUE "Installing Python library OpenSSL..."
 sudo pip install pyopenssl
 
-
 BLUE "Installing Python library pydispatch..."
 sudo pip install pydispatch
 
@@ -265,7 +271,6 @@ sudo apt install -y cmake
 
 BLUE "Installing mplayer..."
 sudo apt install -y mplayer
-
 
 BLUE "Installing sshpass..."
 sudo apt install -y sshpass
@@ -282,7 +287,7 @@ sudo apt install libcompress-raw-lzma-perl
 BLUE "Installing dos2unix..."
 sudo apt install libcompress-raw-lzma-perl
 
-#BLUE "Installing Typora..."
+BLUE "Installing Typora..."
 # or use
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
 #wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
@@ -298,14 +303,14 @@ sudo apt-get install typora
 #seclists
 #installs to /usr/share/seclists
 BLUE "installing seclists..."
-wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O SecList.zip
-sudo unzip SecLists.zip /usr/share
-sudo mv /usr/share/SecLists-master /usr/share/seclists
-rm SecList.zip
+wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O SecLists.zip
+sudo unzip -q -o SecLists.zip
+sudo mv SecLists-master /usr/share/seclists
+rm SecLists.zip
 
 #autorecon
 BLUE "installing AutoRecon..."
 sudo git clone https://github.com/Tib3rius/AutoRecon /opt/autorecon
 sudo python3 -m pip install -r /opt/autorecon/requirements.txt
-sudo mv /opt/autorecon/src/* /opt/autorecon
+sudo mv /opt/autorecon/src/autorecon/* /opt/autorecon
 sudo rm -rf /opt/autorecon/src /opt/autorecon/LICENSE /opt/autorecon/requirements.txt /opt/autorecon/Dockerfile
