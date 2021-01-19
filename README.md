@@ -1,5 +1,7 @@
 # Ignition Key
 
+### Built-on, added, updated and removed packages to make it work with Parrot Home.
+
 
 > John Hammond | January 23rd, 2018
 
