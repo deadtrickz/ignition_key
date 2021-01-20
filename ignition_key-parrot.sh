@@ -32,8 +32,6 @@ then
 	exit
 fi
 
-
-
 BLUE "Updating repositories..."
 sudo apt update
 
@@ -70,6 +68,7 @@ fi
 #sudo apt-get install -y simplescreenrecorder
 #Flameshot is used in instead
 BLUE "Installing Flameshot..."
+#Ubuntu and other major debian distros can use the below and comment out the rest
 #sudo apt-get install -y Flameshot
 wget "https://github.com/flameshot-org/flameshot/releases/download/v0.8.5/flameshot-0.8.5-1.debian-10.amd64.deb" -O flameshot.deb
 dpkg -i flameshot.deb
@@ -226,7 +225,6 @@ BLUE "Installing Hopper..."
 wget "https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-4.3.14-Linux.deb"
 dpkg -i Hopper-v4-4.3.14-Linux.deb
 rm Hopper-v4-4.3.14-Linux.deb
-
 
 BLUE "Installing Oracle Java 8..."
 echo "" | sudo add-apt-repository ppa:webupd8team/java
