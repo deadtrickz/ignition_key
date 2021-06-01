@@ -11,3 +11,6 @@ ehthumbs_vista.db
 
 #Subversion files
 .svn
+
+#Obsidian folders
+.obsidian
